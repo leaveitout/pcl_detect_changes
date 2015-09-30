@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
     // Objects for storing the point clouds
     CloudT::Ptr cloudA(new CloudT);
     CloudT::Ptr cloudB(new CloudT);
-    
+
     QStringList files = getAllPCDFilesInDir(QDir(argv[1]));
 
     if(files.empty()) {
