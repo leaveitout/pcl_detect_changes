@@ -3,7 +3,6 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/visualization/pcl_visualizer.h>
-#include <QtDebug>
 #include <QtCore/qdiriterator.h>
 
 
@@ -25,9 +24,8 @@ QStringList getAllPCDFilesInDir(QDir dir) {
         dirIterator.next();
 
         if(QFileInfo(dirIterator.filePath()).isFile())
-        if(QFileInfo(dirIterator.filePath()).suffix() == "pcd") {
-            pathList << dirIterator.filePath();
-        }
+            if(QFileInfo(dirIterator.filePath()).suffix() == "pcd")
+                pathList << dirIterator.filePath();
     }
 
     pathList.sort();
