@@ -132,7 +132,7 @@ int main(int argc, char** argv) {
     // Change resolution object, with a resolution of 128
     // (resolution at lowest octree level.
     // TODO: Add arg parser for this value
-    pcl::octree::OctreePointCloudChangeDetector<pcl::PointXYZRGB> octree(128.0f);
+    pcl::octree::OctreePointCloudChangeDetector<pcl::PointXYZRGB> octree(0.01);
     cloudA = removePlaneFilteredPoints(cloudA);
 
     // Add cloudA to the octree
@@ -157,7 +157,7 @@ int main(int argc, char** argv) {
 
     while(stringIter.hasNext() && !viewer->wasStopped()) {
 
-//        for(int i=0; i< 5; i++)
+//        for(int i=0; i< 3; i++)
 //            if( stringIter.hasNext())
 //                stringIter.next();
 
@@ -187,7 +187,7 @@ int main(int argc, char** argv) {
         extract.filter(*cloudExtracted);
 
         viewer->removePointCloud("CloudDiff");
-        pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(cloudB);
+        pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(cloudExtracted);
         viewer->addPointCloud<PointT>(cloudExtracted, rgb, "CloudDiff");
 
         viewer->spinOnce(1);
